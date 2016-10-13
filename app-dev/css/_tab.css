@@ -1,0 +1,38 @@
+.ui.tabular.menu {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  right: 0;
+  height: 40px;
+  z-index: 1;
+  border-bottom: none;
+  overflow: auto;
+}
+
+.ui.tabular.menu .item:hover {
+  background-color: #D4D4D5;
+}
+
+.ui[class*="top attached"].menu {
+  margin-top: -1px;
+  background-color: #e6e6e6;
+}
+
+.ui[class*="top attached"].menu .item {
+  color: #777;
+  border-bottom: 1px solid #D4D4D5;
+}
+
+.ui[class*="top attached"].menu .item > i.icon {
+  position: relative;
+  right: -10px;
+  opacity: 0;
+}
+
+.ui[class*="top attached"].menu .item:hover > i.icon {
+  opacity: 1;
+}
+
+.ui.bottom.attached.segment {
+  height: 100%;
+}

@@ -1,0 +1,30 @@
+.workzone {
+  height: 100%;
+  position: relative;
+}
+
+.workzone .workzone-start,
+.workzone.inactive .overlay {
+  display: none;
+}
+
+.workzone.inactive .workzone-start {
+  display: block;
+}
+
+.workzone .workzone-start {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #e6e6e6;
+}
+
+.workzone.ondrag .workzone-start {
+  color: #D4D4D5;
+}
+
+.workzone .workzone-start i {
+  font-size: 4em;
+}

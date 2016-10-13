@@ -1,0 +1,24 @@
+.statusbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  height: 30px;
+  background: #2c3e50;
+  font-size: .9em;
+}
+
+.statusbar .coordinates {
+  padding: .45em 0 0 1em;
+  color: #fff;
+}
+
+.statusbar .x-value {
+  margin-right: 1em;
+}
+
+.statusbar .x-value,
+.statusbar .y-value {
+  letter-spacing: .12em;
+}

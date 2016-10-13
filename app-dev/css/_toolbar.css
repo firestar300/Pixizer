@@ -1,0 +1,35 @@
+.toolbar {
+  background-color: #ecf0f1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.toolbar .ui.menu {
+  background-color: transparent;
+}
+
+.toolbar .ui.menu a.button {
+  background-color: transparent;
+}
+
+.toolbar .ui.menu a.button:hover {
+  background-color: #e6e6e6;
+}
+
+.toolbar .ui.menu i.icon {
+  color: #777;
+}
+
+.toolbar .ui.menu .right .js-crop {
+  margin: 6px;
+}
+
+.toolbar .ui.menu .right .js-crop i {
+  color: #fff;
+  position: relative;
+  right: -10px;
+  opacity: 1;
+}

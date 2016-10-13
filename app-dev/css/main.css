@@ -1,0 +1,17 @@
+/* Global styles */
+@import url('_global.css');
+
+/* Toolbar */
+@import url('_toolbar.css');
+
+/* Tabs */
+@import url('_tab.css');
+
+/* Workzone */
+@import url('_workzone.css');
+@import url('_resize-container.css');
+@import url('_overlay.css');
+
+
+/* Settings bar */
+@import url('_statusbar.css');
