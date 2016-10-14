@@ -1,4 +1,3 @@
-- fix resizing image origin
 - Width/Height overlay
 - Tab system
 - Open file
@@ -6,3 +5,4 @@
 - Undo/redo
 - Settings
 - Languages (json)
+- Use arrows of the keyboard to move the image pixel per pixel

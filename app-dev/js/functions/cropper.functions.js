@@ -3,6 +3,7 @@ exports.resizeableImage = (image) => {
       $body = document.querySelector('body'),
       $x_coor = document.querySelector('.x-value'),
       $y_coor = document.querySelector('.y-value'),
+      $overlay = document.querySelector('.overlay'),
       orig_src = new Image(),
       image_target = image,
       event_state = {},
@@ -145,6 +146,10 @@ exports.resizeableImage = (image) => {
       // Apply left and top value on dragging span corners
       $container.style.top = `${top}px`;
       $container.style.left = `${left}px`;
+
+      // Set X and Y values of the image position on Status Bar
+      $x_coor.innerHTML = `${left - $overlay.offsetLeft}px`;
+      $y_coor.innerHTML = `${top - $overlay.offsetTop}px`;
     }
   }
 
@@ -183,8 +188,9 @@ exports.resizeableImage = (image) => {
     $container.style.left = `${positionLeft}px`;
     $container.style.top = `${positionTop}px`;
 
-    $x_coor.innerHTML = $container.style.left;
-    $y_coor.innerHTML = $container.style.top;
+    // Set X and Y values of the image position on Status Bar
+    $x_coor.innerHTML = `${positionLeft - $overlay.offsetLeft}px`;
+    $y_coor.innerHTML = `${positionTop - $overlay.offsetTop}px`;
   };
 
   crop = () => {
