@@ -37,23 +37,31 @@
             <i class="setting icon"></i>
           </a>
         </div>
-        <!-- <div class="right menu">
+        <div class="right menu">
           <div class="dimensions">
-            <div class="ui left mini transparent icon input">
-              <input type="number" id="width" name="width" disabled placeholder="Width">
-              <i class="resize horizontal icon"></i>
-            </div>
-            <div class="ui left mini transparent icon input">
-              <input type="number" id="height" name="height" disabled placeholder="Height">
-              <i class="resize vertical icon"></i>
-            </div>
-            <div class="ui slider checkbox">
-              <input type="checkbox" tabindex="0" disabled class="hidden">
+            <div class="inline fields">
+              <!-- Width and height -->
+              <div class="ui four left transparent icon input">
+                <input type="number" id="width" name="width" placeholder="Width">
+                <div class="ui label">px</div>
+                <i class="resize horizontal icon"></i>
+              </div>
+              <div class="ui four left transparent icon input">
+                <input type="number" id="height" name="height" placeholder="Height">
+                <div class="ui label">px</div>
+                <i class="resize vertical icon"></i>
+              </div>
+              <div class="ui four left transparent icon input">
+                <div class="ui slider checkbox">
+                  <input type="checkbox" tabindex="0" class="hidden">
+                </div>
+              </div>
+              <!-- Preview button -->
+              <div class="ui four left input">
+                <button class="ui red button js-crop">Preview <i class="unhide icon"></i></button>
+              </div>
             </div>
           </div>
-        </div> -->
-        <div class="right menu">
-          <button class="ui red button js-crop">Preview <i class="unhide icon"></i></button>
         </div>
       </div>
     </div>
@@ -111,24 +119,8 @@
             <span class="y">Y : </span><span class="y-value">0px</span>
           </div>
         </div>
-        <!-- Width and height -->
-        <div class="six wide column">
-          <div class="dimensions">
-            <div class="ui left mini transparent icon input">
-              <input type="number" id="width" name="width" disabled placeholder="Width">
-              <i class="resize horizontal icon"></i>
-            </div>
-            <div class="ui left mini transparent icon input">
-              <input type="number" id="height" name="height" disabled placeholder="Height">
-              <i class="resize vertical icon"></i>
-            </div>
-            <div class="ui slider checkbox">
-              <input type="checkbox" tabindex="0" disabled class="hidden">
-            </div>
-          </div>
-        </div>
         <!-- Zoom -->
-        <div class="four wide column">
+        <div class="four wide column right floated aligned">
           <input type="range" id="zoomRange" class="ui range" disabled name="name" value="100" max="300" min="10" step="10">
         </div>
         <div class="two wide column">

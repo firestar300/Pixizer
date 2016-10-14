@@ -11,6 +11,7 @@
   background-color: transparent;
 }
 
+/* Toolbar buttons */
 .toolbar .ui.menu a.button {
   background-color: transparent;
 }
@@ -23,6 +24,33 @@
   color: #777;
 }
 
+/* Toolbar Width and Height */
+.toolbar .dimensions .icon.input > input {
+  width: 85px;
+  padding-left: 2em!important;
+  padding-right: 0!important;
+}
+
+.toolbar .dimensions .left i.icon {
+  right: auto;
+  left: 0;
+}
+
+.toolbar .dimensions .ui.slider {
+  padding: .3em 0 0 10px;
+}
+
+.toolbar .dimensions .ui.slider.checkbox .box:before,
+.toolbar .dimensions .ui.slider.checkbox label:before {
+  background-color: #aaa!important;
+}
+
+.toolbar .ui.slider.checkbox input:checked~.box:before,
+.toolbar .ui.slider.checkbox input:checked~label:before {
+  background-color: #2ecc71!important;
+}
+
+/* Toolbar preview button */
 .toolbar .ui.menu .right .js-crop {
   margin: 6px;
 }
@@ -30,6 +58,6 @@
 .toolbar .ui.menu .right .js-crop i {
   color: #fff;
   position: relative;
-  right: -10px;
+  left: 10px;
   opacity: 1;
 }
