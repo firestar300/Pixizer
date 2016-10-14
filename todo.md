@@ -1,0 +1,8 @@
+- fix resizing image origin
+- Width/Height overlay
+- Tab system
+- Open file
+- Save file
+- Undo/redo
+- Settings
+- Languages (json)
