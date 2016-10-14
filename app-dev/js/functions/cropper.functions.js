@@ -99,16 +99,19 @@ exports.resizeableImage = (image) => {
 
     // Position image differently depending on the corner dragged and constraints
 
+    // South East
     if (event_state.evnt.target.classList.contains('resize-handle-se')) {
       width = mouse.x - event_state.container_left;
       height = mouse.y  - event_state.container_top;
       left = event_state.container_left;
       top = event_state.container_top;
+    // South West
     } else if(event_state.evnt.target.classList.contains('resize-handle-sw')) {
       width = event_state.container_width - (mouse.x - event_state.container_left);
       height = mouse.y  - event_state.container_top;
       left = mouse.x;
       top = event_state.container_top;
+    // North West
     } else if(event_state.evnt.target.classList.contains('resize-handle-nw')) {
       width = event_state.container_width - (mouse.x - event_state.container_left);
       height = event_state.container_height - (mouse.y - event_state.container_top);
@@ -118,6 +121,7 @@ exports.resizeableImage = (image) => {
       if(constrain || e.shiftKey){
         top = mouse.y - ((width / orig_src.width * orig_src.height) - height);
       }
+    // North East
     } else if(event_state.evnt.target.classList.contains('resize-handle-ne')) {
       width = mouse.x - event_state.container_left;
       height = event_state.container_height - (mouse.y - event_state.container_top);
@@ -137,6 +141,10 @@ exports.resizeableImage = (image) => {
     if(width > min_width && height > min_height && width < max_width && height < max_height){
       // To improve performance you might limit how often resizeImage() is called
       resizeImage(width, height);
+
+      // Apply left and top value on dragging span corners
+      $container.style.top = `${top}px`;
+      $container.style.left = `${left}px`;
     }
   }
 
