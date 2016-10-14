@@ -18,6 +18,8 @@ exports.createImage = (path) => {
   Pixizer.Functions.Crop.resizeableImage(image);
   Pixizer.Modules.Zoom();
 
+  Pixizer.Functions.Overlay.Dimensions();
+
 
   // Crop : http://dev.vizuina.com/cropper/
   // http://tympanus.net/codrops/2014/10/30/resizing-cropping-images-canvas/

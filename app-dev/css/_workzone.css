@@ -2,6 +2,7 @@
   height: 100%;
   position: relative;
   background-color: #fff;
+  /*transform-origin: 50% 50%;*/
 }
 
 .workzone .workzone-start,

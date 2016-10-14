@@ -16,6 +16,8 @@ Pixizer.Modules.Zoom                    = require('./../js/modules/zoom');
 
 Pixizer.Functions                       = {};
 Pixizer.Functions.Crop                  = require('./../js/functions/cropper.functions.js');
+Pixizer.Functions.Overlay               = {};
+Pixizer.Functions.Overlay.Dimensions    = require('./../js/functions/overlayDimensions.functions.js');
 
 if(Pixizer.Config.DevMode) {
   // Open the DevTools.

@@ -68,8 +68,8 @@ exports.resizeableImage = (image) => {
 
   saveEventState = function(e){
     // Save the initial event details and container state
-    event_state.container_width = $container.offsetWidth;
-    event_state.container_height = $container.offsetHeight;
+    event_state.container_width = $container.clientWidth;
+    event_state.container_height = $container.clientHeight;
     event_state.container_left = $container.offsetLeft;
     event_state.container_top = $container.offsetTop;
     event_state.mouse_x = (e.clientX || e.pageX);
@@ -198,8 +198,10 @@ exports.resizeableImage = (image) => {
       $overlay = document.querySelector('.overlay'),
       left = $overlay.offsetLeft - $container.offsetLeft,
       top =  $overlay.offsetTop - $container.offsetTop,
-      width = $overlay.offsetWidth,
-      height = $overlay.offsetHeight;
+      width = $overlay.clientWidth,
+      height = $overlay.clientHeight;
+
+      console.log('left : ' + left + ', top : ' + top + ', width : ' + width + ', height : ' + height )
 
     crop_canvas = document.createElement('canvas');
     crop_canvas.width = width;

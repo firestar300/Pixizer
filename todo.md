@@ -1,7 +1,7 @@
 - Width/Height overlay
-- Tab system
 - Open file
 - Save file
+- Tab system
 - Undo/redo
 - Settings
 - Languages (json)
