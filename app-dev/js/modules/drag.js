@@ -13,7 +13,6 @@ module.exports = (() => {
     e.preventDefault();
 
     $imageContainer.classList.remove('ondrag');
-    $imageContainer.classList.remove('inactive');
 
     for (let f of e.dataTransfer.files) {
       console.log(f);

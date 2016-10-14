@@ -9,16 +9,61 @@
   font-size: .9em;
 }
 
-.statusbar .coordinates {
-  padding: .45em 0 0 1em;
+.statusbar .coordinates,
+.statusbar .dimensions input,
+.statusbar .dimensions input:focus,
+.statusbar .zoom input,
+.statusbar .zoom input:focus,
+.statusbar i.icon {
   color: #fff;
 }
 
-.statusbar .x-value {
+.statusbar .coordinates {
+  padding: .45em 0 0 1em;
+}
+
+.statusbar .coordinates .x-value {
   margin-right: 1em;
 }
 
-.statusbar .x-value,
-.statusbar .y-value {
+.statusbar .coordinates .x-value,
+.statusbar .coordinates .y-value {
   letter-spacing: .12em;
+}
+
+.statusbar .zoom {
+  padding: .4em 0;
+}
+
+.statusbar .dimensions {
+  padding: .15em 0;
+}
+
+.statusbar .dimensions .ui.slider {
+  padding-top: 7px;
+}
+
+.statusbar .dimensions .ui.slider.checkbox .box:before,
+.statusbar .dimensions .ui.slider.checkbox label:before {
+  background-color: #c0392b!important;
+}
+
+.statusbar .ui.slider.checkbox input:checked~.box:before,
+.statusbar .ui.slider.checkbox input:checked~label:before {
+  background-color: #2ecc71!important;
+}
+
+.statusbar .dimensions .icon.input > input {
+  width: 65px;
+  padding-left: 2em!important;
+  padding-right: 0!important;
+}
+
+.statusbar .dimensions i.icon {
+  right: auto;
+  left: 0;
+}
+
+.statusbar .zoom input {
+  width: 60px;
 }

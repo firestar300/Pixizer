@@ -35,4 +35,7 @@
 
 .ui.bottom.attached.segment {
   height: 100%;
+  padding: 9px 0 0;
+  background-color: #D4D4D5;
+  margin-bottom: 0;
 }

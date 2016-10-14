@@ -1,6 +1,7 @@
 .workzone {
   height: 100%;
   position: relative;
+  background-color: #fff;
 }
 
 .workzone .workzone-start,

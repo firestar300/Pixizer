@@ -1,6 +1,8 @@
 exports.resizeableImage = (image) => {
   let $container,
       $body = document.querySelector('body'),
+      $x_coor = document.querySelector('.x-value'),
+      $y_coor = document.querySelector('.y-value'),
       orig_src = new Image(),
       image_target = image,
       event_state = {},
@@ -164,8 +166,6 @@ exports.resizeableImage = (image) => {
     e.preventDefault();
     e.stopPropagation();
 
-    console.log(e);
-
     mouse.x = (e.clientX || e.pageX)
     mouse.y = (e.clientY || e.pageY);
 
@@ -174,6 +174,9 @@ exports.resizeableImage = (image) => {
 
     $container.style.left = `${positionLeft}px`;
     $container.style.top = `${positionTop}px`;
+
+    $x_coor.innerHTML = $container.style.left;
+    $y_coor.innerHTML = $container.style.top;
   };
 
   crop = () => {
@@ -184,15 +187,12 @@ exports.resizeableImage = (image) => {
       width = $overlay.offsetWidth,
       height = $overlay.offsetHeight;
 
-      console.log(left, top, width, height);
-
     crop_canvas = document.createElement('canvas');
     crop_canvas.width = width;
     crop_canvas.height = height;
 
     crop_canvas.getContext('2d').drawImage(image_target, left, top, width, height, 0, 0, width, height);
 
-    console.log(crop_canvas.toDataURL("image/png"));
     window.open(crop_canvas.toDataURL("image/png"));
   }
 

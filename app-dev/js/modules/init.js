@@ -5,16 +5,18 @@ exports.destroyImage = () => {
 };
 
 exports.createImage = (path) => {
-  
+
   const image = document.createElement('img');
 
   $imageContainer.appendChild(image);
+  $imageContainer.classList.remove('inactive');
 
   image.classList.add('resize-image');
   image.setAttribute('id', 'image');
   image.setAttribute('src', path);
 
   Pixizer.Functions.Crop.resizeableImage(image);
+  Pixizer.Modules.Zoom();
 
 
   // Crop : http://dev.vizuina.com/cropper/

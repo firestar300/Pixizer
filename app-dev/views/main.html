@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/main.css" media="screen" title="no title">
   </head>
   <body>
+    <!-- Toolbar -->
     <div class="toolbar">
       <div class="ui top menu">
         <div class="item">
@@ -36,12 +37,28 @@
             <i class="setting icon"></i>
           </a>
         </div>
+        <!-- <div class="right menu">
+          <div class="dimensions">
+            <div class="ui left mini transparent icon input">
+              <input type="number" id="width" name="width" disabled placeholder="Width">
+              <i class="resize horizontal icon"></i>
+            </div>
+            <div class="ui left mini transparent icon input">
+              <input type="number" id="height" name="height" disabled placeholder="Height">
+              <i class="resize vertical icon"></i>
+            </div>
+            <div class="ui slider checkbox">
+              <input type="checkbox" tabindex="0" disabled class="hidden">
+            </div>
+          </div>
+        </div> -->
         <div class="right menu">
-          <button class="ui red button js-crop">Crop <i class="crop icon"></i></button>
+          <button class="ui red button js-crop">Preview <i class="unhide icon"></i></button>
         </div>
       </div>
     </div>
 
+    <!-- Tabs -->
     <div class="ui top attached tabular menu">
       <a class="item active">berserk.png <i class="remove icon"></i></a>
       <a class="item">wallpaperrt.jpg</a>
@@ -70,42 +87,58 @@
       <a class="item">wallpaperrt.jpg</a>
       <a class="item">lolaee.gif</a>
     </div>
+
+    <!-- Workzone -->
     <div class="ui bottom attached segment">
       <div id="workzone" class="workzone inactive">
         <div class="workzone-start">
           <i class="image icon"></i>
-          <h2>Open an image file or just drag and drop it here</h2>
+          <h2>Open an image file or just drop it here</h2>
         </div>
         <div class="overlay">
           <div class="overlay-inner"></div>
         </div>
-        <!-- <img class="resize-image" id="image" src="" alt="Image" /> -->
       </div>
     </div>
 
-    <div>
-      <input type="range" name="name" value="">
-      <a href="http://tympanus.net/Tutorials/ImageResizeCropCanvas/">TEST</a>
-      <div>
-        <input type="text" id="width" name="width" placeholder="Width" />
-        <input type="checkbox" id="ratio" name="ratio" value="ratio">
-        <input type="text" id="height" name="height" placeholder="Height" />
-      </div>
-      <button type="button" class="open">Open</button>
-      <button type="button" class="save">Save</button>
-      <button type="button" class="delete">Delete</button>
-    </div>
-
+    <!-- Status bar -->
     <div class="statusbar">
       <div class="ui grid">
-        <div class="five wide column">
+        <!-- Coordinates -->
+        <div class="four wide column">
           <div class="coordinates">
             <span class="x">X : </span><span class="x-value">0px</span>
             <span class="y">Y : </span><span class="y-value">0px</span>
           </div>
         </div>
-        <div class="six wide column"></div>
-        <div class="five wide column"></div>
+        <!-- Width and height -->
+        <div class="six wide column">
+          <div class="dimensions">
+            <div class="ui left mini transparent icon input">
+              <input type="number" id="width" name="width" disabled placeholder="Width">
+              <i class="resize horizontal icon"></i>
+            </div>
+            <div class="ui left mini transparent icon input">
+              <input type="number" id="height" name="height" disabled placeholder="Height">
+              <i class="resize vertical icon"></i>
+            </div>
+            <div class="ui slider checkbox">
+              <input type="checkbox" tabindex="0" disabled class="hidden">
+            </div>
+          </div>
+        </div>
+        <!-- Zoom -->
+        <div class="four wide column">
+          <input type="range" id="zoomRange" class="ui range" disabled name="name" value="" max="300" min="10" step="10">
+        </div>
+        <div class="two wide column">
+          <div class="zoom">
+            <div class="ui mini transparent icon input">
+              <input type="number" id="zoomField" placeholder="Zoom" disabled min="10" max="300">
+              <i class="percent icon"></i>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>
@@ -117,6 +150,9 @@
 
   <!-- UI-Semantic -->
   <script src="../lib/semantic.min.js"></script>
+  <script type="text/javascript">
+    $('.ui.checkbox').checkbox();
+  </script>
 
   <!-- App -->
   <script src="../js/app.js"></script>

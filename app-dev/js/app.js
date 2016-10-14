@@ -12,6 +12,7 @@ Pixizer.Modules                         = {};
 Pixizer.Modules.Toolbar                 = require('./../js/modules/toolbar');
 Pixizer.Modules.Load                    = require('./../js/modules/drag');
 Pixizer.Modules.Init                    = require('./../js/modules/init');
+Pixizer.Modules.Zoom                    = require('./../js/modules/zoom');
 
 Pixizer.Functions                       = {};
 Pixizer.Functions.Crop                  = require('./../js/functions/cropper.functions.js');
