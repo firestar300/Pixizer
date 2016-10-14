@@ -1,4 +1,3 @@
-- Width/Height overlay
 - Open file
 - Save file
 - Tab system
@@ -7,3 +6,4 @@
 - Languages (json)
 - Use arrows of the keyboard to move the image pixel per pixel
 - Use Enter key to valide zoom /width / height input
+- fix zoom cursor with arrow keys
