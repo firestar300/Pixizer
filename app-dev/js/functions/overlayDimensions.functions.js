@@ -1,8 +1,12 @@
-const $workzone     = document.getElementById('workzone');
-const $overlay      = document.querySelector('.overlay');
-const $widthField   = document.getElementById('width');
-const $heightField  = document.getElementById('height');
-const $ratio        = document.getElementById('ratio');
+const $workzone           = document.getElementById('workzone');
+const $overlay            = document.querySelector('.overlay');
+const $overlayBefore      = document.querySelector('.overlay-before');
+const $overlayAfter       = document.querySelector('.overlay-after');
+const $overlayInnerBefore = document.querySelector('.overlay-inner-before');
+const $overlayInnerAfter  = document.querySelector('.overlay-inner-after');
+const $widthField         = document.getElementById('width');
+const $heightField        = document.getElementById('height');
+const $ratio              = document.getElementById('ratio');
 
 module.exports = () => {
 
@@ -50,6 +54,8 @@ module.exports = () => {
     }
 
     $overlay.style.width = `${width}px`;
+    $overlayBefore.style.width = `${width}px`;
+    $overlayAfter.style.width = `${width}px`;
 
     onChange = true;
   }
@@ -72,6 +78,8 @@ module.exports = () => {
     }
 
     $overlay.style.height = `${height}px`;
+    $overlayInnerBefore.style.height = `${height}px`;
+    $overlayInnerAfter.style.height = `${height}px`;
 
     onChange = true;
   }

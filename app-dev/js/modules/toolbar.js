@@ -1,7 +1,7 @@
 module.exports = (() => {
 
   const $OpenBtn = document.querySelector('.open');
-  const $SaveBtn = document.querySelector('.save');
+  const $SaveBtn = document.querySelector('.save-as');
   const {dialog} = Pixizer.ElectronFramework.Remote;
 
   // Open file
@@ -20,7 +20,7 @@ module.exports = (() => {
       (file) => {
         if(file !== undefined) {
           const path = file[0];
-
+          
           // Create Image
         } else {
           // Error

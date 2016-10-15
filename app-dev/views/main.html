@@ -22,13 +22,13 @@
           <a href="#" class="icon ui button" data-tooltip="New tab" data-position="bottom center" data-inverted>
             <i class="file outline icon"></i>
           </a>
-          <a href="#" class="icon ui button" data-tooltip="Open an image" data-position="bottom center" data-inverted>
+          <a href="#" class="icon ui button open" data-tooltip="Open an image" data-position="bottom center" data-inverted>
             <i class="folder open outline icon"></i>
           </a>
           <a href="#" class="icon ui button" data-tooltip="Save" data-position="bottom center" data-inverted>
             <i class="save icon"></i>
           </a>
-          <a href="#" class="icon ui button" data-tooltip="Save as..." data-position="bottom center" data-inverted>
+          <a href="#" class="icon ui button save-as" data-tooltip="Save as..." data-position="bottom center" data-inverted>
             <i class="copy icon"></i>
           </a>
         </div>
@@ -82,7 +82,12 @@
           <h2>Open an image file or just drop it here</h2>
         </div>
         <div class="overlay">
-          <div class="overlay-inner"></div>
+          <span class="overlay-before"></span>
+          <div class="overlay-inner">
+            <span class="overlay-inner-before"></span>
+            <span class="overlay-inner-after"></span>
+          </div>
+          <span class="overlay-after"></span>
         </div>
       </div>
     </div>

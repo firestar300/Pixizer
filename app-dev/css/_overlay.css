@@ -12,47 +12,46 @@
     pointer-events: none;
 }
 
-.overlay:after,
-.overlay:before {
-    content: '';
+.overlay .overlay-before,
+.overlay .overlay-after {
     position: absolute;
     display: block;
-    width: 204px;
+    width: 200px;
     height: 40px;
     border-left: dashed 2px rgba(222,60,80,.9);
     border-right: dashed 2px rgba(222,60,80,.9);
 }
 
-.overlay:before {
+.overlay .overlay-before {
     top: 0;
     margin-left: -2px;
     margin-top: -40px;
 }
 
-.overlay:after {
+.overlay .overlay-after {
     bottom: 0;
     margin-left: -2px;
     margin-bottom: -40px;
 }
 
-.overlay-inner:after,
-.overlay-inner:before {
-    content: '';
-    position: absolute;
-    display: block;
-    width: 40px;
-    height: 204px;
-    border-top: dashed 2px rgba(222,60,80,.9);
-    border-bottom: dashed 2px rgba(222,60,80,.9);
+.overlay .overlay-inner-after,
+.overlay .overlay-inner-before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 40px;
+  height: 200px;
+  border-top: dashed 2px rgba(222,60,80,.9);
+  border-bottom: dashed 2px rgba(222,60,80,.9);
 }
 
-.overlay-inner:before {
+.overlay .overlay-inner-before {
     left: 0;
     margin-left: -40px;
     margin-top: -2px;
 }
 
-.overlay-inner:after {
+.overlay .overlay-inner-after {
     right: 0;
     margin-right: -40px;
     margin-top: -2px;
