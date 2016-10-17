@@ -1,4 +1,4 @@
-const $workzone           = document.getElementById('workzone');
+const $workzone           = document.getElementById('workzone-' + Pixizer.ActiveFileIndex);
 const $overlay            = document.querySelector('.overlay');
 const $overlayBefore      = document.querySelector('.overlay-before');
 const $overlayAfter       = document.querySelector('.overlay-after');

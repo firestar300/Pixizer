@@ -42,23 +42,23 @@
             <div class="inline fields">
               <!-- Width and height -->
               <div class="ui four left transparent icon input">
-                <input type="number" id="width" name="width" min="1" max="9999" placeholder="Width">
+                <input type="number" id="width" disabled name="width" min="1" max="9999" placeholder="Width">
                 <div class="ui label">px</div>
                 <i class="resize horizontal icon"></i>
               </div>
               <div class="ui four left transparent icon input">
-                <input type="number" id="height" name="height" min="1" max="9999" placeholder="Height">
+                <input type="number" id="height" disabled name="height" min="1" max="9999" placeholder="Height">
                 <div class="ui label">px</div>
                 <i class="resize vertical icon"></i>
               </div>
               <div class="ui four left transparent icon input">
                 <div class="ui slider checkbox">
-                  <input type="checkbox" id="ratio" tabindex="0" class="hidden">
+                  <input type="checkbox" id="ratio" disabled tabindex="0" class="hidden">
                 </div>
               </div>
               <!-- Preview button -->
               <div class="ui four left input">
-                <button class="ui red button js-crop">Preview <i class="unhide icon"></i></button>
+                <button class="ui red button js-crop" disabled>Preview <i class="unhide icon"></i></button>
               </div>
             </div>
           </div>
@@ -67,16 +67,13 @@
     </div>
 
     <!-- Tabs -->
-    <div class="ui top attached tabular menu">
-      <a class="item active">berserk.png <i class="remove icon"></i></a>
-      <a class="item">wallpaperrt.jpg</a>
-      <a class="item">lolaee.gif</a>
-      <a class="item">wallpaperrt.jpg</a>
+    <div id="tabs" class="ui top attached tabular menu">
+      <a class="item active" data-id="0">Welcome</a>
     </div>
 
     <!-- Workzone -->
-    <div class="ui bottom attached segment">
-      <div id="workzone" class="workzone inactive">
+    <div id="workzones" class="ui bottom attached segment">
+      <div id="workzone-0" class="workzone inactive">
         <div class="workzone-start">
           <i class="image icon"></i>
           <h2>Open an image file or just drop it here</h2>

@@ -1,38 +1,28 @@
-const $imageContainer = document.getElementById('workzone');
+module.exports = {
+  enableEditingTools: () => {
+    // Toolbar
+    document.getElementById('width').removeAttribute('disabled');
+    document.getElementById('height').removeAttribute('disabled');
+    document.getElementById('ratio').removeAttribute('disabled');
+    document.querySelector('.js-crop').removeAttribute('disabled');
 
-exports.destroyImage = () => {
+    // Statusbar
+    document.getElementById('zoomRange').removeAttribute('disabled');
+    document.getElementById('zoomField').removeAttribute('disabled');
+  },
+  disableEditingTools: () => {
+    // Toolbar
+    document.getElementById('width').setAttribute('disabled', 'disabled');
+    document.getElementById('width').value = '';
+    document.getElementById('height').setAttribute('disabled', 'disabled');
+    document.getElementById('height').value = '';
+    document.getElementById('ratio').setAttribute('disabled', 'disabled');
+    document.querySelector('.js-crop').setAttribute('disabled', 'disabled');
 
-};
-
-exports.createImage = (path) => {
-
-  const image = document.createElement('img');
-
-  $imageContainer.appendChild(image);
-  $imageContainer.classList.remove('inactive');
-
-  image.classList.add('resize-image');
-  image.setAttribute('id', 'image');
-  image.setAttribute('src', path);
-
-  Pixizer.Functions.Crop.resizeableImage(image);
-  Pixizer.Modules.Zoom();
-
-  Pixizer.Functions.Overlay.Dimensions();
-
-
-  // Crop : http://dev.vizuina.com/cropper/
-  // http://tympanus.net/codrops/2014/10/30/resizing-cropping-images-canvas/
-
-  // const edit = document.getElementsByClassName('edit')[0];
-  // const reset = document.getElementsByClassName('reset')[0];
-  // const save = document.getElementsByClassName('save')[0];
-  // const cancel = document.getElementsByClassName('cancel')[0];
-  // const imageWidth = image.getAttribute('data-original-width');
-  // const imageHeight = image.getAttribute('data-original-height');
-  // const ratioValue = imageWidth / imageHeight;
-  //
-  // setImageWidthValueToInputField(imageWidth);
-  // setImageHeightValueToInputField(imageHeight);
-  // setRatioValueToCheckboxField(ratioValue);
+    // Statusbar
+    document.getElementById('zoomRange').setAttribute('disabled', 'disabled');
+    document.getElementById('zoomRange').value = 100;
+    document.getElementById('zoomField').setAttribute('disabled', 'disabled');
+    document.getElementById('zoomField').value = 100;
+  }
 };

@@ -1,12 +1,8 @@
-const $workzone   = document.getElementById('workzone');
+const $workzone   = document.getElementById('workzone-' + Pixizer.ActiveFileIndex);
 const $range      = document.getElementById('zoomRange');
 const $zoomField  = document.getElementById('zoomField');
 
 module.exports = () => {
-
-  // Faire un module commun pour enlever les disavled de tous les el de la status bar
-  $range.removeAttribute('disabled');
-  $zoomField.removeAttribute('disabled');
 
   let changeScale = (zoomValue) => {
     let scaleValue = zoomValue / 100;

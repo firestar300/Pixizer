@@ -1,4 +1,5 @@
-const $imageContainer = document.getElementById('workzone');
+const $imageContainer = document.getElementById('workzone-' + Pixizer.ActiveFileIndex);
+const Document        = Pixizer.Classes.Document;
 
 module.exports = (() => {
 
@@ -18,8 +19,7 @@ module.exports = (() => {
       console.log(f);
       console.log('File(s) you dragged here: ', f.path);
 
-      Pixizer.Modules.Init.destroyImage();
-      Pixizer.Modules.Init.createImage(f.path);
+      new Document(f.path, f.name);
     }
 
     return false;

@@ -5,6 +5,10 @@
   /*transform-origin: 50% 50%;*/
 }
 
+.workzone.hidden {
+  display: none;
+}
+
 .workzone .workzone-start,
 .workzone.inactive .overlay {
   display: none;

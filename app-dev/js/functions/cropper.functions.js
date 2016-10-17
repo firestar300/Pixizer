@@ -3,7 +3,7 @@ exports.resizeableImage = (image) => {
       $body = document.querySelector('body'),
       $x_coor = document.querySelector('.x-value'),
       $y_coor = document.querySelector('.y-value'),
-      $overlay = document.querySelector('.overlay'),
+      $overlay = document.querySelector('#workzone-' + Pixizer.ActiveFileIndex + ' .overlay'),
       orig_src = new Image(),
       image_target = image,
       event_state = {},
@@ -26,6 +26,7 @@ exports.resizeableImage = (image) => {
     wrapper.className = 'resize-container';
 
     // insert wrapper before el in the DOM tree
+    console.log(wrapper, image);
     image.parentNode.insertBefore(wrapper, image);
 
     // move el into wrapper
@@ -194,24 +195,31 @@ exports.resizeableImage = (image) => {
   };
 
   crop = () => {
-  let crop_canvas,
-      $overlay = document.querySelector('.overlay'),
-      left = $overlay.offsetLeft - $container.offsetLeft,
-      top =  $overlay.offsetTop - $container.offsetTop,
-      width = $overlay.clientWidth,
-      height = $overlay.clientHeight;
+    let activeDocumentID = $overlay.parentNode.getAttribute('id');
+    if(activeDocumentID.substr(activeDocumentID.length - 1) == Pixizer.ActiveFileIndex) {
+      let crop_canvas,
+        left = $overlay.offsetLeft - $container.offsetLeft,
+        top =  $overlay.offsetTop - $container.offsetTop,
+        width = $overlay.clientWidth,
+        height = $overlay.clientHeight;
 
-      console.log('left : ' + left + ', top : ' + top + ', width : ' + width + ', height : ' + height )
+      crop_canvas = document.createElement('canvas');
+      crop_canvas.width = width;
+      crop_canvas.height = height;
 
-    crop_canvas = document.createElement('canvas');
-    crop_canvas.width = width;
-    crop_canvas.height = height;
+      crop_canvas.getContext('2d').drawImage(image_target, left, top, width, height, 0, 0, width, height);
 
-    crop_canvas.getContext('2d').drawImage(image_target, left, top, width, height, 0, 0, width, height);
-
-    window.open(crop_canvas.toDataURL("image/png"));
+      window.open(crop_canvas.toDataURL("image/png"));
+    }
   }
 
   init();
 
 };
+
+exports.destroy = (id) => {
+  let $overlay = document.querySelector('#workzone-' + id + ' .overlay');
+  console.log('destroying');
+
+  // Remove listeners L59>64
+}
