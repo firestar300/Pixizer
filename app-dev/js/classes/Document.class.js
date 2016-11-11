@@ -33,7 +33,6 @@ module.exports = class Document {
     Pixizer.TabsList.push(ImageDatas);
 
     $tabs.every((el) => {
-      console.log(el.getAttribute('data-id'), ImageDatas.id);
       if(el.getAttribute('data-id') == ImageDatas.id) {
         // Replace the Welcome tab
         el.setAttribute('title', ImageDatas.filepath);

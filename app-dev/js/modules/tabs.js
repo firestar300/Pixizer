@@ -1,5 +1,4 @@
 module.exports = {
-
   init: () => {
     let $tabs = document.querySelectorAll('a.item[data-id]');
 
@@ -43,13 +42,11 @@ module.exports = {
       tabID = Pixizer.ActiveFileIndex;
     }
 
-    Pixizer.Functions.Crop.destroy(Pixizer.ActiveFileIndex);
-
     // Update the active tab index
     Pixizer.ActiveFileIndex = tabID;
 
-    let $image = document.getElementById('image-' + tabID);
-    Pixizer.Functions.Crop.resizeableImage($image);
+    // Init Crop function on the active tab
+    Pixizer.Functions.Crop.init(Pixizer.ActiveFileIndex);
 
     let workzones = document.querySelectorAll('.workzone'),
         $tabs = document.querySelectorAll('a.item[data-id]');
@@ -79,8 +76,8 @@ module.exports = {
     $workzone = document.getElementById('workzone-' + tabID);
     $workzone.parentNode.removeChild($workzone);
 
-    console.log(Pixizer.TabsList);
-    let indexOfPreviousTab;
+    let indexOfPreviousTab,
+        indexOfNextTab;
 
     Pixizer.TabsList.forEach((tab, i, array) => {
       if(tab.id == tabID) {

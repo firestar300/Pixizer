@@ -1,11 +1,12 @@
-exports.resizeableImage = (image) => {
+exports.init = (id, remove) => {
   let $container,
       $body = document.querySelector('body'),
       $x_coor = document.querySelector('.x-value'),
       $y_coor = document.querySelector('.y-value'),
       $overlay = document.querySelector('#workzone-' + Pixizer.ActiveFileIndex + ' .overlay'),
+      $cropBtn = document.querySelector('.js-crop'),
       orig_src = new Image(),
-      image_target = image,
+      image_target = document.getElementById('image-' + id),
       event_state = {},
       constrain = false,
       min_width = 0,
@@ -15,28 +16,47 @@ exports.resizeableImage = (image) => {
       resize_canvas = document.createElement('canvas');
 
   let init = () => {
-
     // Create a new image with a copy of the original src
     // When resizing, we will always use this original copy as the base
     orig_src.src = image_target.src;
 
-    // create wrapper container
-    var wrapper = document.createElement('div');
+    // If handles doesn't existe, create them
+    if(document.querySelector('#workzone-' + Pixizer.ActiveFileIndex + ' .resize-container') === null) {
 
+      createElements();
+
+      console.log(image_target);
+      image_target.addEventListener('mousedown', startMoving);
+      $cropBtn.addEventListener('click', crop);
+    }
+
+    // Get a variable for the container
+    $container =  image_target.parentNode;
+    // Add events
+    let handles = document.querySelectorAll('#workzone-' + Pixizer.ActiveFileIndex + ' .resize-handle');
+
+    [].forEach.call(handles, (e) => {
+      e.addEventListener('mousedown', startResize);
+    });
+    console.log($container);
+  };
+
+  createElements = () => {
+    // create wrapper container
+    let wrapper = document.createElement('div');
     wrapper.className = 'resize-container';
 
     // insert wrapper before el in the DOM tree
-    console.log(wrapper, image);
-    image.parentNode.insertBefore(wrapper, image);
+    image_target.parentNode.insertBefore(wrapper, image_target);
 
     // move el into wrapper
-    wrapper.appendChild(image);
+    wrapper.appendChild(image_target);
 
     // Create span
-    var handleNw = document.createElement('span');
-    var handleNe = document.createElement('span');
-    var handleSe = document.createElement('span');
-    var handleSw = document.createElement('span');
+    let handleNw = document.createElement('span');
+    let handleNe = document.createElement('span');
+    let handleSe = document.createElement('span');
+    let handleSw = document.createElement('span');
 
     // Add classes to span
     handleNw.className = 'resize-handle resize-handle-nw';
@@ -45,29 +65,15 @@ exports.resizeableImage = (image) => {
     handleSw.className = 'resize-handle resize-handle-sw';
 
     // Insert span before img
-    image.parentNode.insertBefore(handleNw, image);
-    image.parentNode.insertBefore(handleNe, image);
+    image_target.parentNode.insertBefore(handleNw, image_target);
+    image_target.parentNode.insertBefore(handleNe, image_target);
 
     // Insert span after img
-    image.parentNode.appendChild(handleSe);
-    image.parentNode.appendChild(handleSw);
+    image_target.parentNode.appendChild(handleSe);
+    image_target.parentNode.appendChild(handleSw);
+  }
 
-    // Get a variable for the container
-    $container =  image.parentNode;
-
-    // Add events
-    let handles = document.querySelectorAll('.resize-handle');
-
-    [].forEach.call(handles, (e) => {
-      e.addEventListener('mousedown', startResize);
-    });
-
-    image.addEventListener('mousedown', startMoving);
-
-    document.querySelector('.js-crop').addEventListener('click', crop);
-  };
-
-  saveEventState = function(e){
+  saveEventState = (e) => {
     // Save the initial event details and container state
     event_state.container_width = $container.clientWidth;
     event_state.container_height = $container.clientHeight;
@@ -77,6 +83,8 @@ exports.resizeableImage = (image) => {
     event_state.mouse_y = (e.clientY || e.pageY);
 
     event_state.evnt = e;
+
+    console.log(event_state.container_width, event_state.container_height, event_state.container_left, event_state.container_top);
   }
 
   startResize = (e) => {
@@ -207,19 +215,32 @@ exports.resizeableImage = (image) => {
       crop_canvas.width = width;
       crop_canvas.height = height;
 
+      console.log(image_target, left, top, width, height, 0, 0, width, height);
       crop_canvas.getContext('2d').drawImage(image_target, left, top, width, height, 0, 0, width, height);
 
       window.open(crop_canvas.toDataURL("image/png"));
     }
   }
 
+  destroy = () => {
+    console.log('cc');
+    let handles = document.querySelectorAll('#workzone-' + Pixizer.ActiveFileIndex + ' .resstarmize-handle');
+
+    // Remove listeners onResize
+    [].forEach.call(handles, (el) => {
+      el.removeEventListener('mousedown', startResize);
+      el.parentNode.removeChild(el);
+    });
+    document.removeEventListener('mouseup', endResize);
+    document.removeEventListener('mousemove', resizing);
+
+    // Remove listeners onMove
+    image_target.removeEventListener('mousedown', startMoving);
+    document.removeEventListener('mouseup', endMoving);
+    document.removeEventListener('mousemove', moving);
+
+    $cropBtn.removeEventListener('click', crop);
+  }
+
   init();
-
 };
-
-exports.destroy = (id) => {
-  let $overlay = document.querySelector('#workzone-' + id + ' .overlay');
-  console.log('destroying');
-
-  // Remove listeners L59>64
-}
