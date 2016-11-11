@@ -1,4 +1,5 @@
-- add width and height in the statutsbar
+- add width and height in the statusbar
+- rotation/symmetry http://stackoverflow.com/questions/34688514/after-rotate-draw-image-at-correct-position
 - Open file
 - Save file
 - Tab system
@@ -7,7 +8,6 @@
 - Languages (json)
 - Use arrows of the keyboard to move the image pixel per pixel
 - Use Enter key to valide zoom /width / height input
-- rotation/symmetry
 - color of overlay in settings
 
 ## Bug
