@@ -42,11 +42,11 @@ module.exports = {
       tabID = Pixizer.ActiveFileIndex;
     }
 
-    // Update the active tab index
-    Pixizer.ActiveFileIndex = tabID;
-
     // Init Crop function on the active tab
     Pixizer.Functions.Crop.init(Pixizer.ActiveFileIndex);
+
+    // Update the active tab index
+    Pixizer.ActiveFileIndex = tabID;
 
     let workzones = document.querySelectorAll('.workzone'),
         $tabs = document.querySelectorAll('a.item[data-id]');

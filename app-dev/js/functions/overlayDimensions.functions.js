@@ -13,15 +13,19 @@ module.exports = () => {
   let $container = document.querySelector('.resize-container'),
       $x_coor = document.querySelector('.x-value'),
       $y_coor = document.querySelector('.y-value'),
+      borderTopWidth = getComputedStyle($overlay).getPropertyValue('border-top-width').substring(0, getComputedStyle($overlay).getPropertyValue('border-top-width').length - 2),
+      borderRightWidth = getComputedStyle($overlay).getPropertyValue('border-right-width').substring(0, getComputedStyle($overlay).getPropertyValue('border-right-width').length - 2),
+      borderBottomWidth = getComputedStyle($overlay).getPropertyValue('border-bottom-width').substring(0, getComputedStyle($overlay).getPropertyValue('border-bottom-width').length - 2),
+      borderLeftWidth = getComputedStyle($overlay).getPropertyValue('border-left-width').substring(0, getComputedStyle($overlay).getPropertyValue('border-left-width').length - 2),
       onChange = false;
 
   let init = () => {
-    $widthField.value = $overlay.clientWidth;
-    $heightField.value = $overlay.clientHeight;
+    $widthField.value = $overlay.offsetWidth;
+    $heightField.value = $overlay.offsetHeight;
 
     // Listener on width field inuput
     $widthField.addEventListener('blur', () => {
-      if($widthField.value != $overlay.clientWidth) {
+      if($widthField.value != $overlay.offsetWidth) {
         onChange = true;
         setOverlayWidth($widthField.value);
       }
@@ -29,7 +33,7 @@ module.exports = () => {
 
     // Listener on height field inuput
     $heightField.addEventListener('blur', () => {
-      if($heightField.value != $overlay.clientHeight) {
+      if($heightField.value != $overlay.offsetHeight) {
         onChange = true;
         setOverlayHeight($heightField.value);
       }
@@ -37,6 +41,7 @@ module.exports = () => {
   }
 
   let setOverlayWidth = (width) => {
+
     if($ratio.checked && onChange) {
       onChange = false;
 
@@ -53,9 +58,9 @@ module.exports = () => {
       setOverlayHeight($overlay.clientHeight * ratioValue);
     }
 
-    $overlay.style.width = `${width}px`;
-    $overlayBefore.style.width = `${width}px`;
-    $overlayAfter.style.width = `${width}px`;
+    $overlay.style.width = `${parseInt(width) - parseInt(borderRightWidth) - parseInt(borderLeftWidth)}px`;
+    $overlayBefore.style.width = `${parseInt(width) - parseInt(borderRightWidth) - parseInt(borderLeftWidth)}px`;
+    $overlayAfter.style.width = `${parseInt(width) - parseInt(borderRightWidth) - parseInt(borderLeftWidth)}px`;
 
     onChange = true;
   }
@@ -77,9 +82,9 @@ module.exports = () => {
       setOverlayWidth($overlay.clientWidth * ratioValue);
     }
 
-    $overlay.style.height = `${height}px`;
-    $overlayInnerBefore.style.height = `${height}px`;
-    $overlayInnerAfter.style.height = `${height}px`;
+    $overlay.style.height = `${parseInt(height) - parseInt(borderTopWidth) - parseInt(borderBottomWidth)}px`;
+    $overlayInnerBefore.style.height = `${parseInt(height) - parseInt(borderTopWidth) - parseInt(borderBottomWidth)}px`;
+    $overlayInnerAfter.style.height = `${parseInt(height) - parseInt(borderTopWidth) - parseInt(borderBottomWidth)}px`;
 
     onChange = true;
   }

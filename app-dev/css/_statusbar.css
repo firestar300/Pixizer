@@ -20,13 +20,13 @@
   padding: .45em 0 0 1em;
 }
 
-.statusbar .coordinates .x-value {
-  margin-right: 1em;
-}
 
 .statusbar .coordinates .x-value,
-.statusbar .coordinates .y-value {
+.statusbar .coordinates .y-value,
+.statusbar .coordinates .width-value,
+.statusbar .coordinates .height-value {
   letter-spacing: .12em;
+  margin: 0 .7em 0 .2em;
 }
 
 .statusbar .zoom {

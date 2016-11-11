@@ -36,8 +36,14 @@ module.exports = (() => {
         if(file !== undefined) {
           const filepath = file[0];
           const filename = filepath.replace(/^.*[\\\/]/, '');
+          let filetype = `image/${filename.split('.').pop()}`;
 
-          new Document(filepath, filename);
+          // fix for JPEG formats
+          if (filetype === 'image/jpg') {
+            filetype = 'image/jpeg';
+          }
+
+          new Document(filepath, filename, filetype);
           // Create Image
         } else {
           // Error

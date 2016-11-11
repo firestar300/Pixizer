@@ -3,6 +3,8 @@ exports.init = (id, remove) => {
       $body = document.querySelector('body'),
       $x_coor = document.querySelector('.x-value'),
       $y_coor = document.querySelector('.y-value'),
+      $width = document.querySelector('.width-value'),
+      $height = document.querySelector('.height-value'),
       $overlay = document.querySelector('#workzone-' + Pixizer.ActiveFileIndex + ' .overlay'),
       $cropBtn = document.querySelector('.js-crop'),
       orig_src = new Image(),
@@ -25,7 +27,6 @@ exports.init = (id, remove) => {
 
       createElements();
 
-      console.log(image_target);
       image_target.addEventListener('mousedown', startMoving);
       $cropBtn.addEventListener('click', crop);
     }
@@ -38,7 +39,9 @@ exports.init = (id, remove) => {
     [].forEach.call(handles, (e) => {
       e.addEventListener('mousedown', startResize);
     });
-    console.log($container);
+
+    console.log(image_target.width);
+
   };
 
   createElements = () => {
@@ -83,8 +86,6 @@ exports.init = (id, remove) => {
     event_state.mouse_y = (e.clientY || e.pageY);
 
     event_state.evnt = e;
-
-    console.log(event_state.container_width, event_state.container_height, event_state.container_left, event_state.container_top);
   }
 
   startResize = (e) => {
@@ -157,8 +158,10 @@ exports.init = (id, remove) => {
       $container.style.left = `${left}px`;
 
       // Set X and Y values of the image position on Status Bar
-      $x_coor.innerHTML = `${left - $overlay.offsetLeft}px`;
-      $y_coor.innerHTML = `${top - $overlay.offsetTop}px`;
+      $x_coor.innerHTML = `${Math.round(left - $overlay.offsetLeft)}px`;
+      $y_coor.innerHTML = `${Math.round(top - $overlay.offsetTop)}px`;
+      $width.innerHTML = `${Math.round(width)}px`;
+      $height.innerHTML = `${Math.round(height)}px`;
     }
   }
 
@@ -200,6 +203,8 @@ exports.init = (id, remove) => {
     // Set X and Y values of the image position on Status Bar
     $x_coor.innerHTML = `${positionLeft - $overlay.offsetLeft}px`;
     $y_coor.innerHTML = `${positionTop - $overlay.offsetTop}px`;
+    $width.innerHTML = `${Math.round($container.clientWidth)}px`;
+    $height.innerHTML = `${Math.round($container.clientHeight)}px`;
   };
 
   crop = () => {
@@ -208,8 +213,8 @@ exports.init = (id, remove) => {
       let crop_canvas,
         left = $overlay.offsetLeft - $container.offsetLeft,
         top =  $overlay.offsetTop - $container.offsetTop,
-        width = $overlay.clientWidth,
-        height = $overlay.clientHeight;
+        width = $overlay.offsetWidth,
+        height = $overlay.offsetHeight;
 
       crop_canvas = document.createElement('canvas');
       crop_canvas.width = width;
@@ -220,26 +225,6 @@ exports.init = (id, remove) => {
 
       window.open(crop_canvas.toDataURL("image/png"));
     }
-  }
-
-  destroy = () => {
-    console.log('cc');
-    let handles = document.querySelectorAll('#workzone-' + Pixizer.ActiveFileIndex + ' .resstarmize-handle');
-
-    // Remove listeners onResize
-    [].forEach.call(handles, (el) => {
-      el.removeEventListener('mousedown', startResize);
-      el.parentNode.removeChild(el);
-    });
-    document.removeEventListener('mouseup', endResize);
-    document.removeEventListener('mousemove', resizing);
-
-    // Remove listeners onMove
-    image_target.removeEventListener('mousedown', startMoving);
-    document.removeEventListener('mouseup', endMoving);
-    document.removeEventListener('mousemove', moving);
-
-    $cropBtn.removeEventListener('click', crop);
   }
 
   init();

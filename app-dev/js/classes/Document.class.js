@@ -1,20 +1,19 @@
 module.exports = class Document {
 
-  constructor(filepath, filename) {
+  constructor(filepath, filename, filetype) {
     let ThisDoc = this;
 
     const ImageDatas = {
       "id" : Pixizer.FileIndex,
       "filepath" : filepath,
       "filename" : filename,
+      "filetype" : filetype,
       "overlay" : {
         "width" : 200,
         "height" : 200
       },
       "active" : true
     };
-
-    Pixizer.FileIndex++;
 
     // Create a new tab
     ThisDoc.newTab(ImageDatas);
@@ -24,6 +23,8 @@ module.exports = class Document {
 
     //Switch tab
     Pixizer.Modules.Tabs.switchTab();
+
+    Pixizer.FileIndex++;
   }
 
   newTab(ImageDatas) {

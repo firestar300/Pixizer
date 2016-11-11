@@ -5,8 +5,8 @@
     margin-top: -100px;
     margin-left: -100px;
     z-index: 999;
-    width: 200px;
-    height: 200px;
+    width: 196px;
+    height: 196px;
     border: solid 2px rgba(222,60,80,.9);
     box-sizing: content-box;
     pointer-events: none;
@@ -16,7 +16,7 @@
 .overlay .overlay-after {
     position: absolute;
     display: block;
-    width: 200px;
+    width: 196px;
     height: 40px;
     border-left: dashed 2px rgba(222,60,80,.9);
     border-right: dashed 2px rgba(222,60,80,.9);
@@ -40,7 +40,7 @@
   position: absolute;
   display: block;
   width: 40px;
-  height: 200px;
+  height: 196px;
   border-top: dashed 2px rgba(222,60,80,.9);
   border-bottom: dashed 2px rgba(222,60,80,.9);
 }

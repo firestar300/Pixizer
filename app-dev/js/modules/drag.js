@@ -19,7 +19,7 @@ module.exports = (() => {
       console.log(f);
       console.log('File(s) you dragged here: ', f.path);
 
-      new Document(f.path, f.name);
+      new Document(f.path, f.name, f.type);
     }
 
     return false;
